@@ -1,0 +1,32 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h1 class="text-center mb-3">
+                <i class="far fa-comment"></i> Chat
+            </h1>
+            <%- include ("./partials/messages"); %>
+                <h5>Select Chat Room</h5>
+                <select id="selectRoom" onchange="displayNewRoomOptions(); goToRoom();">
+                    <option disabled selected value> -- select an option -- </option>
+                    <% roomList.forEach(roomName => { %>
+                        <option value="<%= roomName %>">
+                            <%= roomName %>
+                        </option>
+                    <% }); %>
+                    <option value="newRoom">Create a new Room</option>
+                </select>
+                <br>
+                <div id="newRoomDiv" style="display: none;">
+                    <form id="newRoomForm" method="POST" action="" class="form-inline">
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="inputRoom" class="sr-only">Room Name: </label>
+                            <input type="text" class="form-control" id="inputRoom" placeholder="Room Name"
+                                name="roomName">
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Create & Go</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+</div>
+<script src="/js/chatHome.js"></script>

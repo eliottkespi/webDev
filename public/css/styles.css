@@ -1,0 +1,29 @@
+.btn-close {
+    position: absolute;
+    right: 15px;
+    height: 1em;
+    color: #000;
+    background: transparent url(https://www.onlygfx.com/wp-content/uploads/2018/07/8-grunge-x-brush-stroke-9.png) center/1em no-repeat;
+    border: 0;
+    border-radius: inherit;
+    opacity: .5;
+}
+
+.alert {
+    position: relative;
+    padding: 1rem 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.alert-success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+}
