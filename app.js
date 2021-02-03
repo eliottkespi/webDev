@@ -87,6 +87,20 @@ io.on('connection', socket => {
         io.to(user.room).emit('message', formatChatMessage(msg.name, msg.msg));
     });
 
+    // User Is Typing
+    socket.on('typing', () => {
+        const user = getCurrentUser(socket.id);
+
+        socket.broadcast.to(user.room).emit('isTyping', `${user.username} is typing ...`);
+    });
+
+    // User Stopped Typing
+    socket.on('stopTyping', () => {
+        const user = getCurrentUser(socket.id);
+
+        socket.broadcast.to(user.room).emit('isTyping');
+    });
+
     // User Disconnection Flow
     socket.on('disconnect', () => {
         const user = userLeave(socket.id);

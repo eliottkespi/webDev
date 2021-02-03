@@ -1,6 +1,7 @@
 const chatForm = document.getElementById('inputChatForm');
 const inputChatMessage = document.getElementById('inputChatMessage');
 const connectedUsers = document.getElementById('connectedUsers');
+const userIsTyping = document.getElementById('userIsTyping');
 const socket = io();
 
 // Join Room
@@ -16,9 +17,13 @@ socket.on('connectedUsers', users => {
 
 // Message From Server
 socket.on('message', message => {
-    console.log(message)
     outputMessage(message);
     inputChatMessage.scrollTop = inputChatMessage.scrollHeight;
+});
+
+// Display User Is Typing
+socket.on('isTyping', message => {
+    userIsTyping.innerHTML = message || '';
 });
 
 
@@ -33,6 +38,9 @@ chatForm.addEventListener('submit', (e) => {
         name: name,
         msg: msg
     });
+
+    // Stop Typing
+    socket.emit('stopTyping');
 
     e.target.elements.inputChatMessage.value = '';
     e.target.elements.inputChatMessage.focus();
@@ -52,4 +60,13 @@ function outputMessage(msg) {
 // Output Connected Users to HTML
 function outputConnectedUsers(users) {
     connectedUsers.innerHTML = `${users.map(user => `<li>${user.username}</li>`).join(' ')}`;
+};
+
+// User Is Typing
+function typing() {
+    if (inputChatMessage.value.length > 0) {
+        socket.emit('typing');
+    } else {
+        socket.emit('stopTyping');
+    }
 };
