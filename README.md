@@ -9,4 +9,4 @@ It includes a main NodeJS server with according front end and includes the follo
 
 To start the web app:
 `npm install`, 
-`npm run`
+`npm run-script run`
