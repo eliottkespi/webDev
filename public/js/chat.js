@@ -49,9 +49,9 @@ chatForm.addEventListener('submit', (e) => {
 // Output Message to HTML
 function outputMessage(msg) {
     const div = document.createElement('div');
-    div.classList.add('message');
+    div.classList.add('message', 'rounded', 'border', 'border-1', 'border-light');
     div.innerHTML = `<p class="messageMetadata">${msg.name} <span>${msg.time}</span></p>
-    <p class="text">
+    <p class="messageText">
     ${msg.msg}
     </p>`;
     document.querySelector('.chat-messages').appendChild(div);
@@ -59,7 +59,11 @@ function outputMessage(msg) {
 
 // Output Connected Users to HTML
 function outputConnectedUsers(users) {
-    connectedUsers.innerHTML = `${users.map(user => `<li>${user.username}</li>`).join(' ')}`;
+    var htmlToInject = '<ul class="list-group list-group-flush">'
+    htmlToInject += `${users.map(user => `<li class="list-group-item">${user.username}</li>`).join(' ')}`;
+    htmlToInject += '</ul>'
+
+    connectedUsers.innerHTML = htmlToInject;
 };
 
 // User Is Typing

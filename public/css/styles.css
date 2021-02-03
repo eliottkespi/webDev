@@ -27,3 +27,23 @@
     background-color: #d1e7dd;
     border-color: #badbcc;
 }
+
+.message {
+    background-color: #272c30;
+}
+
+.messageMetadata {
+    text-decoration: underline;
+    color: lightskyblue;
+    padding-left: 1%;
+    font-weight: 500;
+}
+
+.messageText {
+    padding-left: 1%;
+}
+
+#userIsTyping {
+    color: lightgreen;
+    padding-bottom: 5%;
+}
